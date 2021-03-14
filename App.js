@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { Camera } from "expo-camera";
@@ -10,9 +9,8 @@ export default function App() {
 
   const faceDetected = ({ faces }) => {
     setFaces(faces);
-    console.log({ faces }); // ou (faces)
+    console.log(faces);
   };
-
   //utilizar um ciclio de vida de componentes: Quando ele abrir o app a primeira vez, dispare essa ação.
   // será na primeira vez
   useEffect(() => {
@@ -33,12 +31,12 @@ export default function App() {
         style={{ flex: 1 }}
         type="front"
         onFacesDetected={faceDetected}
-        FaceDetectorSettings={{
+        faceDetectorSettings={{
           mode: FaceDetector.Constants.Mode.fast,
           detectLandmarks: FaceDetector.Constants.Landmarks.all,
           runClassifications: FaceDetector.Constants.Classifications.all,
-          minDetectionInterval: 10000,
-          tracking: false,
+          minDetectionInterval: 1000,
+          tracking: true,
         }}
       />
     </SafeAreaView>
