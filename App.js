@@ -11,6 +11,7 @@ export default function App() {
     setFaces(faces);
     console.log(faces);
   };
+
   //utilizar um ciclio de vida de componentes: Quando ele abrir o app a primeira vez, dispare essa ação.
   // será na primeira vez
   useEffect(() => {
@@ -39,6 +40,11 @@ export default function App() {
           tracking: true,
         }}
       />
+      <Text>OII</Text>
+
+      {faces.map((faces) => (
+        <Text key={faces.faceID}>{faces.faceID}</Text>
+      ))}
     </SafeAreaView>
   );
 }
