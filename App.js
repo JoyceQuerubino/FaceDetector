@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Button } from "react-native";
 import { Camera } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 
@@ -9,7 +9,14 @@ export default function App() {
 
   const faceDetected = ({ faces }) => {
     setFaces(faces);
-    console.log(faces);
+    // console.log(faces);
+
+    var item = faces.map((faces) => faces.rightEyeOpenProbability);
+    console.log(item);
+
+    // if (item < 0.021) {
+    //   console.log("Olho fechado");
+    // }
   };
 
   //utilizar um ciclio de vida de componentes: Quando ele abrir o app a primeira vez, dispare essa ação.
@@ -43,8 +50,11 @@ export default function App() {
       <Text>OII</Text>
 
       {faces.map((faces) => (
-        <Text key={faces.faceID}>{faces.faceID}</Text>
+        <Text key={faces.rightEyeOpenProbability}>
+          {faces.rightEyeOpenProbability}
+        </Text>
       ))}
+      <Button title="Mostrar msg" />
     </SafeAreaView>
   );
 }
