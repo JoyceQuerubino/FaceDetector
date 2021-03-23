@@ -7,16 +7,30 @@ export default function App() {
   const [hasPermission, setHasPermission] = useState(null); //estado para ver se a permissão foi aceita ou não.
   const [faces, setFaces] = useState([]);
 
+  function olhofechado(provabilidade) {
+    if (provabilidade < 0.021) {
+      console.log(` teve ${provabilidade} estar com o olho fechado`);
+    }
+  }
+
+  //função da lib facedetector
   const faceDetected = ({ faces }) => {
     setFaces(faces);
     // console.log(faces);
 
-    var item = faces.map((faces) => faces.rightEyeOpenProbability);
-    console.log(item);
+    //pegar um item de um arrey (parametro da função)
+    //Mapear cada elemento, e aplicar essa função. Retornando um novo arrey com a mesma quantidade (no caso 1 único item)
+    var item = faces.map((face) => face.rightEyeOpenProbability);
 
-    // if (item < 0.021) {
-    //   console.log("Olho fechado");
-    // }
+    //converte o arrey em um único item
+    if (item.length > 0) {
+      item = item[0];
+      console.log(item);
+      console.log("entrou aqui");
+
+      // Verifica se esta com os olhos fechados
+      olhofechado(item);
+    }
   };
 
   //utilizar um ciclio de vida de componentes: Quando ele abrir o app a primeira vez, dispare essa ação.
@@ -47,8 +61,6 @@ export default function App() {
           tracking: true,
         }}
       />
-      <Text>OII</Text>
-
       {faces.map((faces) => (
         <Text key={faces.rightEyeOpenProbability}>
           {faces.rightEyeOpenProbability}
