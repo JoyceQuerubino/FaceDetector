@@ -6,10 +6,15 @@ import * as FaceDetector from "expo-face-detector";
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null); //estado para ver se a permissão foi aceita ou não.
   const [faces, setFaces] = useState([]);
+  const [olhos, setOlhos] = useState();
 
+  //Função para verificar se os olhos estão abertos ou fechados
   function olhofechado(provabilidade) {
     if (provabilidade < 0.021) {
       console.log(` teve ${provabilidade} estar com o olho fechado`);
+      setOlhos(false);
+    } else {
+      setOlhos(true);
     }
   }
 
@@ -30,6 +35,7 @@ export default function App() {
 
       // Verifica se esta com os olhos fechados
       olhofechado(item);
+      console.log(olhos);
     }
   };
 
@@ -66,6 +72,7 @@ export default function App() {
           {faces.rightEyeOpenProbability}
         </Text>
       ))}
+      <Text>{olhos ? "olhos abertos" : "olhos fechados"}</Text>
       <Button title="Mostrar msg" />
     </SafeAreaView>
   );
