@@ -55,25 +55,35 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Camera
-        style={{ flex: 1 }}
-        type="front"
-        onFacesDetected={faceDetected}
-        faceDetectorSettings={{
-          mode: FaceDetector.Constants.Mode.fast,
-          detectLandmarks: FaceDetector.Constants.Landmarks.all,
-          runClassifications: FaceDetector.Constants.Classifications.all,
-          minDetectionInterval: 1000,
-          tracking: true,
-        }}
-      />
-      {faces.map((faces) => (
-        <Text key={faces.rightEyeOpenProbability}>
-          {faces.rightEyeOpenProbability}
-        </Text>
-      ))}
-      <Text>{olhos ? "olhos abertos" : "olhos fechados"}</Text>
-      <Button title="Mostrar msg" />
+      <>
+        <Text style={styles.titulo}>Captação facial</Text>
+        <View style={styles.camera}>
+          <Camera
+            style={{ flex: 1 }}
+            type="front"
+            onFacesDetected={faceDetected}
+            faceDetectorSettings={{
+              mode: FaceDetector.Constants.Mode.fast,
+              detectLandmarks: FaceDetector.Constants.Landmarks.all,
+              runClassifications: FaceDetector.Constants.Classifications.all,
+              minDetectionInterval: 1000,
+              tracking: true,
+            }}
+          />
+        </View>
+        <View style={styles.card}>
+          {faces.map((faces) => (
+            <Text style={styles.font} key={faces.rightEyeOpenProbability}>
+              {faces.rightEyeOpenProbability}
+            </Text>
+          ))}
+        </View>
+        <View style={styles.card}>
+          <Text style={styles.font}>
+            {olhos ? "olhos abertos" : "olhos fechados"}
+          </Text>
+        </View>
+      </>
     </SafeAreaView>
   );
 }
@@ -82,5 +92,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: "#5F59D2",
+    alignItems: "center",
+  },
+  titulo: {
+    fontSize: 25,
+    color: "white",
+    marginTop: 15,
+    marginBottom: 10,
+  },
+  camera: {
+    width: 400,
+    height: 400,
+    marginBottom: 20,
+    justifyContent: "center",
+  },
+  font: {
+    fontSize: 18,
+    color: "#383737",
+  },
+
+  card: {
+    alignItems: "center",
+    padding: 10,
+    width: 340,
+    marginBottom: 16,
+    borderRadius: 4,
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
   },
 });
