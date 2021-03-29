@@ -6,8 +6,6 @@ O projeto foi desenvolvido através da Bilioteca [Expo](https://expo.io/), e fra
 | :----------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: |
 | ![3](https://user-images.githubusercontent.com/66806696/112889266-cabb1e00-90ab-11eb-81b2-3e11835582eb.jpeg) | ![2](https://user-images.githubusercontent.com/66806696/112889318-da3a6700-90ab-11eb-935c-235a66da3fa7.jpeg) |
 
-|
-
 ## 🚀 Como executar o projeto
 
 ```bash
@@ -48,3 +46,12 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - **[Camera](https://docs.expo.io/versions/latest/sdk/camera/)**
 - **[FaceDetector](https://docs.expo.io/versions/latest/sdk/facedetector/)**
+
+## 📝 Licença
+
+Este projeto está sob a licença [MIT](./LICENSE).
+
+---
+
+<!--Bottom session-->
+<h4 align=center>Desenvolvido por Joyce Querubino <a href="https://www.linkedin.com/in/joyce-querubino/"> <strong>Entre em contato</strong> :)</a></a></h4>
